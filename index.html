@@ -71,6 +71,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-recommendation_system" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/15/recommendation_system/" class="article-date">
+  <time class="dt-published" datetime="2021-10-15T02:27:47.314Z" itemprop="datePublished">2021-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="Recommendation-system-amp-NLP"><a href="#Recommendation-system-amp-NLP" class="headerlink" title="Recommendation system &amp; NLP"></a>Recommendation system &amp; NLP</h2><p>** Overview **<br>Retrival O(tens of millions) to O(thousands)<br>Ranking O(thousands) to O(hundreds)<br>Post-ranking O(hundreds) to O(dozens)</p>
+<p><strong>Content-based filtering &amp; collaborative filtering</strong><br>Building RS using SGD or WALS</p>
+<p><strong>FM: 分解机(Factorization Machines)推荐算法原理</strong><br>Paper link: <a target="_blank" rel="noopener" href="https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf">https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf</a><br>推导简单易懂的的一篇博文：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6370127.html">https://www.cnblogs.com/pinard/p/6370127.html</a></p>
+<p><strong>NLP</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">re.search(regex, string): to check if string contains regex, return contents regex.</span><br><span class="line">if sentence contains &#x27;。&#x27;, using string.split(&#x27;。&#x27;)</span><br><span class="line">some special usage:</span><br><span class="line">. == match any char</span><br><span class="line">^aaa == match all the items start with  aaa.</span><br><span class="line">aaa$ == match all the items end up with aaa.</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>Word2vec:<br>推荐博文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26306795">https://zhuanlan.zhihu.com/p/26306795</a><br>材料阅读顺序：</p>
+<ol>
+<li><p>Mikolov 两篇原论文：<br>『Distributed Representations of Sentences and Documents』<br>   贡献：在前人基础上提出更精简的语言模型（language model）框架并用于生成词向量，这个框架就是 Word2vec<br>『Efficient estimation of word representations in vector space』<br>   贡献：专门讲训练 Word2vec 中的两个trick：hierarchical softmax 和 negative sampling<br>优点：Word2vec 开山之作，两篇论文均值得一读<br>缺点：只见树木，不见森林和树叶，读完不得要义。<br>   这里『森林』指 word2vec 模型的理论基础——即 以神经网络形式表示的语言模型<br>   『树叶』指具体的神经网络形式、理论推导、hierarchical softmax 的实现细节等等</p>
+</li>
+<li><p>北漂浪子的博客：『深度学习word2vec 笔记之基础篇』<br>优点：非常系统，结合源码剖析，语言平实易懂<br>缺点：太啰嗦，有点抓不住精髓</p>
+</li>
+<li><p>Yoav Goldberg 的论文：『word2vec Explained- Deriving Mikolov et al.’s Negative-Sampling Word-Embedding Method』<br>优点：对 negative-sampling 的公式推导非常完备<br>缺点：不够全面，而且都是公式，没有图示，略显干枯</p>
+</li>
+<li><p>Xin Rong 的论文：『word2vec Parameter Learning Explained』：<br>！重点推荐！<br>理论完备由浅入深非常好懂，且直击要害，既有 high-level 的 intuition 的解释，也有细节的推导过程<br>一定要看这篇paper！一定要看这篇paper！一定要看这篇paper！</p>
+</li>
+<li><p>来斯惟的博士论文『基于神经网络的词和文档语义向量表示方法研究』以及他的博客（网名：licstar）<br>可以作为更深入全面的扩展阅读，这里不仅仅有 word2vec，而是把词嵌入的所有主流方法通通梳理了一遍</p>
+</li>
+<li><p>几位大牛在知乎的回答：『word2vec 相比之前的 Word Embedding 方法好在什么地方？』<br>刘知远、邱锡鹏、李韶华等知名学者从不同角度发表对 Word2vec 的看法，非常值得一看</p>
+</li>
+<li><p>Sebastian 的博客：『On word embeddings - Part 2: Approximating the Softmax』<br>详细讲解了 softmax 的近似方法，Word2vec 的 hierarchical softmax 只是其中一种</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/15/recommendation_system/" data-id="ckujnxaks00001p1bdu9xdffg" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-bash_command" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/10/15/bash_command/" class="article-date">
@@ -105,39 +156,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2021/10/15/bash_command/" data-id="cktr8doho0000lq1b42t6hop1" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-recommendation_system" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/10/14/recommendation_system/" class="article-date">
-  <time class="dt-published" datetime="2021-10-14T07:43:44.239Z" itemprop="datePublished">2021-10-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="Recommendation-system"><a href="#Recommendation-system" class="headerlink" title="Recommendation system"></a>Recommendation system</h2><p><strong>NLP</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">re.search(regex, string): to check if string contains regex, return contents regex.</span><br><span class="line">if sentence contains &#x27;。&#x27;, using string.split(&#x27;。&#x27;)</span><br><span class="line">some special usage:</span><br><span class="line">. == match any char</span><br><span class="line">^aaa == match all the items start with  aaa.</span><br><span class="line">aaa$ == match all the items end up with aaa.</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<p>** Overview **<br>Retrival O(tens of millions) to O(thousands)<br>Ranking O(thousands) to O(hundreds)<br>Post-ranking O(hundreds) to O(dozens)</p>
-<p><strong>Content-based filtering &amp; collaborative filtering</strong><br>Building RS using SGD or WALS</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/14/recommendation_system/" data-id="ckujnxaks00001p1bdu9xdffg" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -231,11 +249,11 @@
       <ul>
         
           <li>
-            <a href="/2021/10/15/bash_command/">(no title)</a>
+            <a href="/2021/10/15/recommendation_system/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2021/10/14/recommendation_system/">(no title)</a>
+            <a href="/2021/10/15/bash_command/">(no title)</a>
           </li>
         
           <li>
