@@ -6,15 +6,15 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Record some common bash commandsLinux CommandsBash shell commands sheet #Basic terminal shortcuts 12345678CTRL A &#x3D; To start of lineCTRL E &#x3D; To the end of the lineCTRL U &#x3D; Delete left of cursor CTRL K">
+  <meta name="description" content="Record some common bash commandsLinux CommandsBash shell commands sheet #SCP Command# 1scp local_file_dir usename@ip_address:remote_dir 第一个参数为 .&#x2F;本地的文件名，第二个参数为 用户名@输入IP地址或者url:&#x2F;远端的文件名绝对地址*注：传输文件夹，scp加">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/10/09/bash_command/index.html">
+<meta property="og:url" content="http://example.com/2021/10/15/bash_command/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Record some common bash commandsLinux CommandsBash shell commands sheet #Basic terminal shortcuts 12345678CTRL A &#x3D; To start of lineCTRL E &#x3D; To the end of the lineCTRL U &#x3D; Delete left of cursor CTRL K">
+<meta property="og:description" content="Record some common bash commandsLinux CommandsBash shell commands sheet #SCP Command# 1scp local_file_dir usename@ip_address:remote_dir 第一个参数为 .&#x2F;本地的文件名，第二个参数为 用户名@输入IP地址或者url:&#x2F;远端的文件名绝对地址*注：传输文件夹，scp加">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-09T10:39:52.794Z">
-<meta property="article:modified_time" content="2021-10-09T10:39:52.794Z">
+<meta property="article:published_time" content="2021-10-15T01:47:57.672Z">
+<meta property="article:modified_time" content="2021-10-15T01:47:57.672Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,8 +75,8 @@
       <div class="outer">
         <section id="main"><article id="post-bash_command" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/10/09/bash_command/" class="article-date">
-  <time class="dt-published" datetime="2021-10-09T10:39:52.794Z" itemprop="datePublished">2021-10-09</time>
+    <a href="/2021/10/15/bash_command/" class="article-date">
+  <time class="dt-published" datetime="2021-10-15T01:47:57.672Z" itemprop="datePublished">2021-10-15</time>
 </a>
     
   </div>
@@ -86,7 +86,9 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Record-some-common-bash-commands"><a href="#Record-some-common-bash-commands" class="headerlink" title="Record some common bash commands"></a>Record some common bash commands</h2><h3 id="Linux-Commands"><a href="#Linux-Commands" class="headerlink" title="Linux Commands"></a>Linux Commands</h3><p><strong>Bash shell commands sheet</strong></p>
-<p>#Basic terminal shortcuts</p>
+<p>#SCP Command#</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp local_file_dir usename@ip_address:remote_dir</span><br></pre></td></tr></table></figure>
+<p>第一个参数为 ./本地的文件名，第二个参数为 用户名@输入IP地址或者url:/远端的文件名绝对地址<br>*注：传输文件夹，scp加 -r<br>远端传至本地同理<br>#Basic terminal shortcuts</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CTRL A = To start of line</span><br><span class="line">CTRL E = To the end of the line</span><br><span class="line">CTRL U = Delete left of cursor </span><br><span class="line">CTRL K = Delete right of cursor</span><br><span class="line">CTRL W = Delete word on the left </span><br><span class="line">CTRL Y = Paste (after CTRL U,K or W)</span><br><span class="line">CTRL L = Clear the terminal</span><br><span class="line">CTRL Z = Stop the current command</span><br></pre></td></tr></table></figure>
 
 <p>#Basic Terminal Navigation</p>
@@ -98,13 +100,13 @@
 </ul>
 <p>#tmux commands:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl + q with shift+ &quot; for top and bottom split,   with shift+ %  for left and right split</span><br><span class="line">ctrl + q + arrow = shift between windows</span><br><span class="line">ctrl q with z for zoom in/out</span><br><span class="line">ctrl q with c for multiple pane</span><br><span class="line">ctrl q with n for next with p for previous</span><br><span class="line">exit  = kill window</span><br></pre></td></tr></table></figure>
-<p>#My Hexo: <a target="_blank" rel="noopener" href="https://yujiaowu.github.io/">https://yujiaowu.github.io</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Language: Markdown</span><br><span class="line">Hexo blog: home/hexo_ blog/source/_posts/bash_command.md</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line">generate+deploy = hexo g -d</span><br><span class="line">https://yujiaowu.github.io</span><br></pre></td></tr></table></figure>
+<p>#My Hexo:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Language: Markdown</span><br><span class="line">Hexo blog: home/hexo_ blog/source/_posts/bash_command.md</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line">generate+deploy = hexo g -d</span><br><span class="line">Check up here: https://yujiaowu.github.io</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/09/bash_command/" data-id="cktr8doho0000lq1b42t6hop1" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/bash_command/" data-id="cktr8doho0000lq1b42t6hop1" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -115,7 +117,7 @@
 <nav id="article-nav">
   
   
-    <a href="/2021/10/09/recommendation_system/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/10/14/recommendation_system/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
@@ -155,11 +157,11 @@
       <ul>
         
           <li>
-            <a href="/2021/10/09/bash_command/">(no title)</a>
+            <a href="/2021/10/15/bash_command/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2021/10/09/recommendation_system/">(no title)</a>
+            <a href="/2021/10/14/recommendation_system/">(no title)</a>
           </li>
         
           <li>
