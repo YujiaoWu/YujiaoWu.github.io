@@ -74,7 +74,7 @@
     <article id="post-recommendation_system" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/10/19/recommendation_system/" class="article-date">
-  <time class="dt-published" datetime="2021-10-19T06:10:00.821Z" itemprop="datePublished">2021-10-19</time>
+  <time class="dt-published" datetime="2021-10-19T06:12:35.863Z" itemprop="datePublished">2021-10-19</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
 <h1 id="从零开始搭建推荐系"><a href="#从零开始搭建推荐系" class="headerlink" title="从零开始搭建推荐系"></a>从零开始搭建推荐系</h1><p>考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，即离线评估和在线评估可能不成正相关的(即使相关，有可能相关度也非常低)。<br>早期阶段缺乏用户与数据，计算成本低所以可以用单服务器部署推荐系统。当用户足够多、单机出现困难时再考虑利用Spark等分布式或计算平台重构现有业务逻辑。</p>
 <h2 id="起步阶段产品的推荐-以金融新闻资讯等文本类产品为例"><a href="#起步阶段产品的推荐-以金融新闻资讯等文本类产品为例" class="headerlink" title="起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):"></a>起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):</h2><p>金融新闻资讯主要是文本标的物的产品，最简单的方式是基于TF-IDF模型来构建算法，每个文本基于TF-IDF构建向量表示，通过向量的余弦相似度来计算两个文本的相似度。<br>这种文本相似度可直接用于构建相关推荐(某个文章最相似的N个文章作为相似度推荐列表)。可将用户最近看的文章的向量进行加权(根据看的时间、停留时间等)，获得用户的向量表示，用户向量与文章向量的余弦就是用户对该文章的喜好度，还可以用item-based协同过滤的计算思路(如下公式)来计算用户对新文章的评分；还有一种方式就是先对文章进行聚类然，在推荐时，以推荐用户看过的文章所在类别的其他文章作为推荐列表。<br>$$sim(u,s) = \sum score(u,s_i)\times sim(s_i,s) $$<br>新闻资讯类一般可以做成信息流推荐，基于上面的TF-IDF算法也是可以实现实时推荐的。对于新发布的一篇文章，可以基于现有的词库(corpus)来生成该文章的向量表示(如果该新文章包含某些词不在词库中，可以直接忽略这些词，虽然会使精度有所下降，但是不用对文章重新求向量化，因此可以做到实时化，向量化的过程可以每天利用所有文章作为document重新训练一次)，向量化后，这个文章就可以其他文章一样处理了。</p>
 <h2 id="FM-分解机-Factorization-Machines-推荐算法原理"><a href="#FM-分解机-Factorization-Machines-推荐算法原理" class="headerlink" title="FM: 分解机(Factorization Machines)推荐算法原理"></a>FM: 分解机(Factorization Machines)推荐算法原理</h2><p>Paper link: <a target="_blank" rel="noopener" href="https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf">https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf</a><br>推导简单易懂的的一篇博文：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6370127.html">https://www.cnblogs.com/pinard/p/6370127.html</a></p>
-<h2 id="Some-FM-related-papers"><a href="#Some-FM-related-papers" class="headerlink" title="Some FM related papers:"></a>Some FM related papers:</h2><p><a target="_blank" rel="noopener" href="https://github.com/Johnson0722/CTR_Prediction">https://github.com/Johnson0722/CTR_Prediction</a><br>CTR prediction using FM FFM and DeepFM<br>718 stars</p>
+<h3 id="Some-FM-related-papers"><a href="#Some-FM-related-papers" class="headerlink" title="Some FM related papers:"></a>Some FM related papers:</h3><p><a target="_blank" rel="noopener" href="https://github.com/Johnson0722/CTR_Prediction">https://github.com/Johnson0722/CTR_Prediction</a><br>CTR prediction using FM FFM and DeepFM<br>718 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/coreylynch/pyFM">https://github.com/coreylynch/pyFM</a><br>Factorization machines in python<br>857 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ibayer/fastFM">https://github.com/ibayer/fastFM</a><br>fastFM: A Library for Factorization Machines<br>945 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/CastellanZhang/alphaFM">https://github.com/CastellanZhang/alphaFM</a><br>Multi-thread implementation of Factorization Machines with FTRL for binary-class classification problem.<br>666 stars</p>
