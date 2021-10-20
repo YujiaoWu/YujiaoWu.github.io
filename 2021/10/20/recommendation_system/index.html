@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Recommendation system &amp; NLP图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》 从零开始搭建推荐系统考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-20T06:26:04.780Z">
-<meta property="article:modified_time" content="2021-10-20T06:26:04.780Z">
+<meta property="article:published_time" content="2021-10-20T06:27:54.241Z">
+<meta property="article:modified_time" content="2021-10-20T06:27:54.241Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -76,7 +76,7 @@
         <section id="main"><article id="post-recommendation_system" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/10/20/recommendation_system/" class="article-date">
-  <time class="dt-published" datetime="2021-10-20T06:26:04.780Z" itemprop="datePublished">2021-10-20</time>
+  <time class="dt-published" datetime="2021-10-20T06:27:54.241Z" itemprop="datePublished">2021-10-20</time>
 </a>
     
   </div>
@@ -89,10 +89,10 @@
 <h2 id="Recommendation-system-amp-NLP"><a href="#Recommendation-system-amp-NLP" class="headerlink" title="Recommendation system &amp; NLP"></a>Recommendation system &amp; NLP</h2><p>图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》</p>
 <h1 id="从零开始搭建推荐系统"><a href="#从零开始搭建推荐系统" class="headerlink" title="从零开始搭建推荐系统"></a>从零开始搭建推荐系统</h1><p>考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，即离线评估和在线评估可能不成正相关的(即使相关，有可能相关度也非常低)。<br>早期阶段缺乏用户与数据，计算成本低所以可以用单服务器部署推荐系统。当用户足够多、单机出现困难时再考虑利用Spark等分布式或计算平台重构现有业务逻辑。</p>
 <h2 id="起步阶段产品的推荐-以金融新闻资讯等文本类产品为例"><a href="#起步阶段产品的推荐-以金融新闻资讯等文本类产品为例" class="headerlink" title="起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):"></a>起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):</h2><p>金融新闻资讯主要是文本标的物的产品，最简单的方式是基于TF-IDF模型来构建算法，每个文本基于TF-IDF构建向量表示，通过向量的余弦相似度来计算两个文本的相似度。<br>这种文本相似度可直接用于构建相关推荐(某个文章最相似的N个文章作为相似度推荐列表)。可将用户最近看的文章的向量进行加权(根据看的时间、停留时间等)，获得用户的向量表示，用户向量与文章向量的余弦就是用户对该文章的喜好度，还可以用item-based协同过滤的计算思路(如下公式)来计算用户对新文章的评分；还有一种方式就是先对文章进行聚类然，在推荐时，以推荐用户看过的文章所在类别的其他文章作为推荐列表。<br>$$sim(u,s) = \sum score(u,s_i)\times sim(s_i,s) $$<br>新闻资讯类一般可以做成信息流推荐，基于上面的TF-IDF算法也是可以实现实时推荐的。对于新发布的一篇文章，可以基于现有的词库(corpus)来生成该文章的向量表示(如果该新文章包含某些词不在词库中，可以直接忽略这些词，虽然会使精度有所下降，但是不用对文章重新求向量化，因此可以做到实时化，向量化的过程可以每天利用所有文章作为document重新训练一次)，向量化后，这个文章就可以其他文章一样处理了。</p>
-<h2 id="矩阵分解推荐算法"><a href="#矩阵分解推荐算法" class="headerlink" title="矩阵分解推荐算法"></a>矩阵分解推荐算法</h2><p><em>核心思想</em> 此处主要用显式反馈(用户的真实评分)来解释矩阵分解算法。其核心思想是将用户的评分矩阵$R$分解为两个矩阵$U$和$V$的乘积；某个用户对某个item的评分，就可以用矩阵U(用户的特征向量)对应的行和矩阵V(item的特征向量)的乘积（内积）。有了用户对item的评分就很容易为ta做推荐了。</p>
-<p>算法原理：将矩阵分解转化为机器学习问题，假设所有用户有评分的(u,v)组成集合为A，u为用户，v为item，通过矩阵分解将用户u和标的物v嵌入k维隐式特征空间，$p_u$,$q_v$,那么用户u对v的预测评分为$\widehat{r_uv} = p_u $真实值和预测值之间的误差为$\Deltar = r_uv - r$预测的越准，$|\Deltar|越小。所以就等价转换为求最小值的优化问题了。</p>
-<p>求解方法：利用SGD,ALS来求解。 </p>
-<p>拓展与优化：</p>
+<h2 id="矩阵分解推荐算法"><a href="#矩阵分解推荐算法" class="headerlink" title="矩阵分解推荐算法"></a>矩阵分解推荐算法</h2><p><strong>核心思想</strong> 此处主要用显式反馈(用户的真实评分)来解释矩阵分解算法。其核心思想是将用户的评分矩阵$R$分解为两个矩阵$U$和$V$的乘积；某个用户对某个item的评分，就可以用矩阵U(用户的特征向量)对应的行和矩阵V(item的特征向量)的乘积（内积）。有了用户对item的评分就很容易为ta做推荐了。</p>
+<p><strong>算法原理</strong> 将矩阵分解转化为机器学习问题，假设所有用户有评分的(u,v)组成集合为A，u为用户，v为item，通过矩阵分解将用户u和标的物v嵌入k维隐式特征空间，$p_u$,$q_v$,那么用户u对v的预测评分为$\widehat{r_uv} = p_u $真实值和预测值之间的误差为$\Deltar = r_uv - r$预测的越准，$|\Deltar|越小。所以就等价转换为求最小值的优化问题了。</p>
+<p><strong>求解方法</strong> 利用SGD,ALS来求解。 </p>
+<p><strong>拓展与优化</strong></p>
 <ul>
 <li>整合偏差项bias；</li>
 <li>增加更多用户信息输入: 具体来说可以整合用户隐式反馈（收藏，点赞，分享等）和用户人口统计学信息（年龄，性别，地域，收入等）到矩阵分解模型中。最终整合了隐式反馈和人口统计学信息（包括偏差项）的用户预测公式可以写出最终优化目标函数，同样可以用SGD和ALS求解。</li>
