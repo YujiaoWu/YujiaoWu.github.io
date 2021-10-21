@@ -156,8 +156,7 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <hr>
-<h2 id="Recommendation-system-amp-NLP"><a href="#Recommendation-system-amp-NLP" class="headerlink" title="Recommendation system &amp; NLP"></a>Recommendation system &amp; NLP</h2><p>图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》</p>
+                <p>图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》</p>
 <h1 id="从零开始搭建推荐系统"><a href="#从零开始搭建推荐系统" class="headerlink" title="从零开始搭建推荐系统"></a>从零开始搭建推荐系统</h1><p>考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，即离线评估和在线评估可能不成正相关的(即使相关，有可能相关度也非常低)。<br>早期阶段缺乏用户与数据，计算成本低所以可以用单服务器部署推荐系统。当用户足够多、单机出现困难时再考虑利用Spark等分布式或计算平台重构现有业务逻辑。</p>
 <h2 id="起步阶段产品的推荐-以金融新闻资讯等文本类产品为例"><a href="#起步阶段产品的推荐-以金融新闻资讯等文本类产品为例" class="headerlink" title="起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):"></a>起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):</h2><p>金融新闻资讯主要是文本标的物的产品，最简单的方式是基于TF-IDF模型来构建算法，每个文本基于TF-IDF构建向量表示，通过向量的余弦相似度来计算两个文本的相似度。<br>这种文本相似度可直接用于构建相关推荐(某个文章最相似的N个文章作为相似度推荐列表)。可将用户最近看的文章的向量进行加权(根据看的时间、停留时间等)，获得用户的向量表示，用户向量与文章向量的余弦就是用户对该文章的喜好度，还可以用item-based协同过滤的计算思路(如下公式)来计算用户对新文章的评分；还有一种方式就是先对文章进行聚类然，在推荐时，以推荐用户看过的文章所在类别的其他文章作为推荐列表。<br>$$sim(u,s) = \sum score(u,s_i)\times sim(s_i,s) $$<br>新闻资讯类一般可以做成信息流推荐，基于上面的TF-IDF算法也是可以实现实时推荐的。对于新发布的一篇文章，可以基于现有的词库(corpus)来生成该文章的向量表示(如果该新文章包含某些词不在词库中，可以直接忽略这些词，虽然会使精度有所下降，但是不用对文章重新求向量化，因此可以做到实时化，向量化的过程可以每天利用所有文章作为document重新训练一次)，向量化后，这个文章就可以其他文章一样处理了。</p>
 <h2 id="矩阵分解推荐算法"><a href="#矩阵分解推荐算法" class="headerlink" title="矩阵分解推荐算法"></a>矩阵分解推荐算法</h2><p><strong>核心思想</strong><br>此处主要用显式反馈(用户的真实评分)来解释矩阵分解算法。其核心思想是将用户的评分矩阵$R$分解为两个矩阵$U$和$V$的乘积；某个用户对某个item的评分，就可以用矩阵U(用户的特征向量)对应的行和矩阵V对应的列(item的特征向量)的乘积（内积）。有了用户对item的评分就很容易为ta做推荐了。</p>
@@ -180,11 +179,29 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/CastellanZhang/alphaFM">https://github.com/CastellanZhang/alphaFM</a><br>Multi-thread implementation of Factorization Machines with FTRL for binary-class classification problem.<br>666 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/rixwew/pytorch-fm">https://github.com/rixwew/pytorch-fm</a><br>Factorization Machine models in PyTorch<br>604 stars</p>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>Factorization machines in python<br>sklearn特征抽取API: sklearn.feature_extraction<br>字典特征抽取API: sklearn.feature_extrection.DictVectorizer<br>DictVectorizer处理对象是符号化（非数字化）、具有一定结构的数据，如字典等，将符号转化为one-hot表示。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DictVectorizer(sparse = True,...)</span><br><span class="line">	DictVectorizer.fit_transform(x)</span><br><span class="line">	# x: 文本或者包含文本字符串的可迭代对象</span><br><span class="line">	#返回值：返回sparse矩阵</span><br><span class="line">	DictVectorizer.inverse_transform(x)</span><br><span class="line">	# x: array数组或者sparse矩阵</span><br><span class="line">	# 返回值：返回之前的数据格式</span><br><span class="line">	DictVectorizer.get_feature_names()</span><br><span class="line">	#返回值：单词列表</span><br><span class="line">	DictVectorizer.transform(x)</span><br><span class="line">	#按照原先的标准转换</span><br></pre></td></tr></table></figure>
+<pre><code>DictVectorizer(sparse = True,...)
+    DictVectorizer.fit_transform(x)
+    # x: 文本或者包含文本字符串的可迭代对象
+    #返回值：返回sparse矩阵
+    DictVectorizer.inverse_transform(x)
+    # x: array数组或者sparse矩阵
+    # 返回值：返回之前的数据格式
+    DictVectorizer.get_feature_names()
+    #返回值：单词列表
+    DictVectorizer.transform(x)
+    #按照原先的标准转换
+</code></pre>
 <p>使用方法：<br>1.先实例化DictVectorizer<br>2.调取方法fit_transform(x)<br>3.DictVectorizer(sparse = False, …)输出数组形式。默认值为True时，返回的是sparse矩阵。</p>
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Retrival O(tens of millions) to O(thousands)<br>Ranking O(thousands) to O(hundreds)<br>Post-ranking O(hundreds) to O(dozens)</p>
 <p><strong>Content-based filtering &amp; collaborative filtering</strong><br>Building RS using SGD or WALS</p>
-<h1 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">re.search(regex, string): to check if string contains regex, return contents regex.</span><br><span class="line">if sentence contains &#x27;。&#x27;, using string.split(&#x27;。&#x27;)</span><br><span class="line">some special usage:</span><br><span class="line">. == match any char</span><br><span class="line">^aaa == match all the items start with  aaa.</span><br><span class="line">aaa$ == match all the items end up with aaa.</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h1 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h1><pre><code>re.search(regex, string): to check if string contains regex, return contents regex.
+if sentence contains &#39;。&#39;, using string.split(&#39;。&#39;)
+some special usage:
+. == match any char
+^aaa == match all the items start with  aaa.
+aaa$ == match all the items end up with aaa.
+ 
+</code></pre>
 <h2 id="Word2vec"><a href="#Word2vec" class="headerlink" title="Word2vec"></a>Word2vec</h2><p>推荐知乎文章[NLP] 秒懂词向量Word2vec的本质：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26306795">https://zhuanlan.zhihu.com/p/26306795</a><br>材料阅读顺序：</p>
 <ol>
 <li><p>Mikolov 两篇原论文：<br>『Distributed Representations of Sentences and Documents』<br>   贡献：在前人基础上提出更精简的语言模型（language model）框架并用于生成词向量，这个框架就是 Word2vec<br>『Efficient estimation of word representations in vector space』<br>   贡献：专门讲训练 Word2vec 中的两个trick：hierarchical softmax 和 negative sampling<br>优点：Word2vec 开山之作，两篇论文均值得一读<br>缺点：只见树木，不见森林和树叶，读完不得要义。<br>   这里『森林』指 word2vec 模型的理论基础——即 以神经网络形式表示的语言模型<br>   『树叶』指具体的神经网络形式、理论推导、hierarchical softmax 的实现细节等等</p>
