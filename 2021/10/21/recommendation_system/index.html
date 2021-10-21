@@ -9,12 +9,12 @@
   <meta name="description" content="Recommendation system &amp; NLP图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》 从零开始搭建推荐系统考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/10/20/recommendation_system/index.html">
+<meta property="og:url" content="http://example.com/2021/10/21/recommendation_system/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Recommendation system &amp; NLP图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》 从零开始搭建推荐系统考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-10-20T06:31:52.097Z">
-<meta property="article:modified_time" content="2021-10-20T06:31:52.097Z">
+<meta property="article:published_time" content="2021-10-21T02:08:21.627Z">
+<meta property="article:modified_time" content="2021-10-21T02:08:21.636Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,8 +75,8 @@
       <div class="outer">
         <section id="main"><article id="post-recommendation_system" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/10/20/recommendation_system/" class="article-date">
-  <time class="dt-published" datetime="2021-10-20T06:31:52.097Z" itemprop="datePublished">2021-10-20</time>
+    <a href="/2021/10/21/recommendation_system/" class="article-date">
+  <time class="dt-published" datetime="2021-10-21T02:08:21.627Z" itemprop="datePublished">2021-10-21</time>
 </a>
     
   </div>
@@ -89,7 +89,7 @@
 <h2 id="Recommendation-system-amp-NLP"><a href="#Recommendation-system-amp-NLP" class="headerlink" title="Recommendation system &amp; NLP"></a>Recommendation system &amp; NLP</h2><p>图书推荐：《构建企业级推荐系统–算法工程实现与案例分析》</p>
 <h1 id="从零开始搭建推荐系统"><a href="#从零开始搭建推荐系统" class="headerlink" title="从零开始搭建推荐系统"></a>从零开始搭建推荐系统</h1><p>考虑尽量快速让新的推荐业务上线，再逐步优化提升算法效果。不能一开始就想做出一个非常完美，效果非常好的推荐系统。在没有上线之前，我们只能根据个人经验来判断算法是否有效，但是个人经验判断往往有误，另外离线评估效果好的算法在真实业务场景中的就不一定提升商业化指标，即离线评估和在线评估可能不成正相关的(即使相关，有可能相关度也非常低)。<br>早期阶段缺乏用户与数据，计算成本低所以可以用单服务器部署推荐系统。当用户足够多、单机出现困难时再考虑利用Spark等分布式或计算平台重构现有业务逻辑。</p>
 <h2 id="起步阶段产品的推荐-以金融新闻资讯等文本类产品为例"><a href="#起步阶段产品的推荐-以金融新闻资讯等文本类产品为例" class="headerlink" title="起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):"></a>起步阶段产品的推荐(以金融新闻资讯等文本类产品为例):</h2><p>金融新闻资讯主要是文本标的物的产品，最简单的方式是基于TF-IDF模型来构建算法，每个文本基于TF-IDF构建向量表示，通过向量的余弦相似度来计算两个文本的相似度。<br>这种文本相似度可直接用于构建相关推荐(某个文章最相似的N个文章作为相似度推荐列表)。可将用户最近看的文章的向量进行加权(根据看的时间、停留时间等)，获得用户的向量表示，用户向量与文章向量的余弦就是用户对该文章的喜好度，还可以用item-based协同过滤的计算思路(如下公式)来计算用户对新文章的评分；还有一种方式就是先对文章进行聚类然，在推荐时，以推荐用户看过的文章所在类别的其他文章作为推荐列表。<br>$$sim(u,s) = \sum score(u,s_i)\times sim(s_i,s) $$<br>新闻资讯类一般可以做成信息流推荐，基于上面的TF-IDF算法也是可以实现实时推荐的。对于新发布的一篇文章，可以基于现有的词库(corpus)来生成该文章的向量表示(如果该新文章包含某些词不在词库中，可以直接忽略这些词，虽然会使精度有所下降，但是不用对文章重新求向量化，因此可以做到实时化，向量化的过程可以每天利用所有文章作为document重新训练一次)，向量化后，这个文章就可以其他文章一样处理了。</p>
-<h2 id="矩阵分解推荐算法"><a href="#矩阵分解推荐算法" class="headerlink" title="矩阵分解推荐算法"></a>矩阵分解推荐算法</h2><p><strong>核心思想</strong><br>此处主要用显式反馈(用户的真实评分)来解释矩阵分解算法。其核心思想是将用户的评分矩阵$R$分解为两个矩阵$U$和$V$的乘积；某个用户对某个item的评分，就可以用矩阵U(用户的特征向量)对应的行和矩阵V(item的特征向量)的乘积（内积）。有了用户对item的评分就很容易为ta做推荐了。</p>
+<h2 id="矩阵分解推荐算法"><a href="#矩阵分解推荐算法" class="headerlink" title="矩阵分解推荐算法"></a>矩阵分解推荐算法</h2><p><strong>核心思想</strong><br>此处主要用显式反馈(用户的真实评分)来解释矩阵分解算法。其核心思想是将用户的评分矩阵$R$分解为两个矩阵$U$和$V$的乘积；某个用户对某个item的评分，就可以用矩阵U(用户的特征向量)对应的行和矩阵V对应的列(item的特征向量)的乘积（内积）。有了用户对item的评分就很容易为ta做推荐了。</p>
 <p><strong>算法原理</strong><br>将矩阵分解转化为机器学习问题，假设所有用户有评分的(u,v)组成集合为A，u为用户，v为item，通过矩阵分解将用户u和标的物v嵌入k维隐式特征空间，$p_u$,$q_v$,那么用户u对v的预测评分为$\widehat{r_uv} = p_u $真实值和预测值之间的误差为$\Deltar = r_uv - r$预测的越准，$|\Deltar|越小。所以就等价转换为求最小值的优化问题了。</p>
 <p><strong>求解方法</strong><br>利用SGD,ALS来求解。 </p>
 <p><strong>拓展与优化</strong></p>
@@ -102,15 +102,15 @@
 <li>整合用户和标的物的metadata信息，该方法可以很好解决用户和标的物的冷启动问题。搜索引擎Lyst就用此方法,一个比较好的代码实现：<a target="_blank" rel="noopener" href="http://github.com/lyst/lightfm">http://github.com/lyst/lightfm</a><h2 id="近实时矩阵分解算法："><a href="#近实时矩阵分解算法：" class="headerlink" title="近实时矩阵分解算法："></a>近实时矩阵分解算法：</h2>前面的算法都适合做批处理，通过离线处理模型，再为用户推荐。批处理适合时效性要求不高的产品，比如电商或长视频。那么对时效性高的比如抖音，网抑云等短时间产生大量标的物的产品，需要实时的矩阵分解，对矩阵进行实时化改造，可以更快反映用户兴趣变化更快整合新标的物至推荐系统。推荐论文：<br>Yanxiang Huang, Bin Cui, Jie Jiang, Kunqian Hong, Wenyu Zhang, and Yiran Xie. 2016. Real-time Video Recommendation Exploration.  <a target="_blank" rel="noopener" href="https://doi.org/10.1145/2882903.2903743">https://doi.org/10.1145/2882903.2903743</a><br>Real-time top-n recommendation in social streams. <a target="_blank" rel="noopener" href="https://www.ismll.uni-hildesheim.de/pub/pdfs/Diaz_Drumond_et_al_RECSYS2012.pdf">https://www.ismll.uni-hildesheim.de/pub/pdfs/Diaz_Drumond_et_al_RECSYS2012.pdf</a><br>Online-Updating Regularized Kernel Matrix Factorization Models for Large-Scale Recommender Systems. <a target="_blank" rel="noopener" href="https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2008-Online_Updating_Regularized_Kernel_Matrix_Factorization_Models.pdf">https://www.ismll.uni-hildesheim.de/pub/pdfs/Rendle2008-Online_Updating_Regularized_Kernel_Matrix_Factorization_Models.pdf</a><br>Fast incremental matrix factorization for recommendation with positive-only feedback. pdf: <a target="_blank" rel="noopener" href="https://asset-pdf.scinapse.io/prod/30495595/30495595.pdf">https://asset-pdf.scinapse.io/prod/30495595/30495595.pdf</a><br>Online Personalized Recommendation Based on Streaming Implicit User Feedback. <a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007%2F978-3-319-25255-1_59#aboutcontent">https://link.springer.com/chapter/10.1007%2F978-3-319-25255-1_59#aboutcontent</a></li>
 </ul>
 <h2 id="FM-因子分解机-Factorization-Machines-推荐算法原理"><a href="#FM-因子分解机-Factorization-Machines-推荐算法原理" class="headerlink" title="FM: 因子分解机(Factorization Machines)推荐算法原理"></a>FM: 因子分解机(Factorization Machines)推荐算法原理</h2><p>Paper link: <a target="_blank" rel="noopener" href="https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf">https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf</a><br>推导简单易懂的的一篇博文：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6370127.html">https://www.cnblogs.com/pinard/p/6370127.html</a><br>矩阵分解算法我们知道是一种高效的嵌入式方法，通过将用户和标的物嵌入低维向量空间，再利用用户和标的物的嵌入向量的内积来预测user对标的物的偏好得分。而FM的核心思想就来源于矩阵分解，MF可以看做是分解机FM的特例。</p>
-<h3 id="FM简单介绍"><a href="#FM简单介绍" class="headerlink" title="FM简单介绍"></a>FM简单介绍</h3><p>最早是2010年Rendel在ICDM提出，和传统线性模型不同的是，FM考虑了特征间的交叉，可对所有特征变量交互进行建模（类似svm的核函数），因此在推荐系统和计算广告领域关注的CTR点击率和CVR转化率有良好表现。</p>
-<h3 id="Some-FM-related-papers"><a href="#Some-FM-related-papers" class="headerlink" title="Some FM related papers:"></a>Some FM related papers:</h3><p><a target="_blank" rel="noopener" href="https://github.com/coreylynch/pyFM">https://github.com/coreylynch/pyFM</a><br>Factorization machines in python<br>857 stars</p>
+<h3 id="FM简单介绍"><a href="#FM简单介绍" class="headerlink" title="FM简单介绍"></a>FM简单介绍</h3><p><em>FM是推荐系统工程师应该熟练掌握和应用的必备算法</em>。最早是2010年Rendel在ICDM提出，和传统线性模型不同的是，FM考虑了特征间的交叉，可对所有特征变量交互进行建模（类似svm的核函数），特征组合对于推荐系统是非常重要的，FM就体现了这个思想（主要是二姐特征组合），因此在推荐系统和计算广告领域关注的CTR点击率和CVR转化率有良好表现。</p>
+<h4 id="从LR到SVM再到FM模型"><a href="#从LR到SVM再到FM模型" class="headerlink" title="从LR到SVM再到FM模型"></a>从LR到SVM再到FM模型</h4><h3 id="Some-FM-related-code"><a href="#Some-FM-related-code" class="headerlink" title="Some FM related code:"></a>Some FM related code:</h3><p><a target="_blank" rel="noopener" href="https://github.com/coreylynch/pyFM">https://github.com/coreylynch/pyFM</a><br>Factorization machines in python<br>857 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Johnson0722/CTR_Prediction">https://github.com/Johnson0722/CTR_Prediction</a><br>CTR prediction using FM FFM and DeepFM<br>718 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/ibayer/fastFM">https://github.com/ibayer/fastFM</a><br>fastFM: A Library for Factorization Machines<br>945 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/CastellanZhang/alphaFM">https://github.com/CastellanZhang/alphaFM</a><br>Multi-thread implementation of Factorization Machines with FTRL for binary-class classification problem.<br>666 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/rixwew/pytorch-fm">https://github.com/rixwew/pytorch-fm</a><br>Factorization Machine models in PyTorch<br>604 stars</p>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>Factorization machines in python<br>sklearn特征抽取API: sklearn.feature_extraction<br>字典特征抽取API: sklearn.feature_extrection.DictVectorizer<br>DictVectorizer处理对象是符号化（非数字化）、具有一定结构的数据，如字典等，将符号转化为one-hot表示。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DictVectorizer(sparse = True,...)</span><br><span class="line">	DictVectorizer.fit_transform(x)</span><br><span class="line">	# x: 文本或者包含文本字符串的可迭代对象</span><br><span class="line">	#返回值：返回sparse矩阵</span><br><span class="line">	DictVectorizer.inverse_transform(x)</span><br><span class="line">	# x: array数组或者sparse矩阵</span><br><span class="line">	# 返回值：返回之前的数据格式</span><br><span class="line">	DictVectorizer.get_feature_names()</span><br><span class="line">	#返回值：单词列表</span><br><span class="line">	DictVectorizer.transform(x)</span><br><span class="line">	#按照原先的标准转换</span><br></pre></td></tr></table></figure>
-<p>使用方法：<br>1.先实例化DictVectorizer<br>2.调取方法fit_transform(x)</p>
+<p>使用方法：<br>1.先实例化DictVectorizer<br>2.调取方法fit_transform(x)<br>3.DictVectorizer(sparse = False, …)输出数组形式。默认值为True时，返回的是sparse矩阵。</p>
 <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>Retrival O(tens of millions) to O(thousands)<br>Ranking O(thousands) to O(hundreds)<br>Post-ranking O(hundreds) to O(dozens)</p>
 <p><strong>Content-based filtering &amp; collaborative filtering</strong><br>Building RS using SGD or WALS</p>
 <h1 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">re.search(regex, string): to check if string contains regex, return contents regex.</span><br><span class="line">if sentence contains &#x27;。&#x27;, using string.split(&#x27;。&#x27;)</span><br><span class="line">some special usage:</span><br><span class="line">. == match any char</span><br><span class="line">^aaa == match all the items start with  aaa.</span><br><span class="line">aaa$ == match all the items end up with aaa.</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
@@ -135,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/10/20/recommendation_system/" data-id="ckujnxaks00001p1bdu9xdffg" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/21/recommendation_system/" data-id="ckujnxaks00001p1bdu9xdffg" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -145,10 +145,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2021/10/21/bash_command/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
-    <a href="/2021/10/15/bash_command/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2021/09/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>
@@ -186,11 +195,11 @@
       <ul>
         
           <li>
-            <a href="/2021/10/20/recommendation_system/">(no title)</a>
+            <a href="/2021/10/21/bash_command/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2021/10/15/bash_command/">(no title)</a>
+            <a href="/2021/10/21/recommendation_system/">(no title)</a>
           </li>
         
           <li>
