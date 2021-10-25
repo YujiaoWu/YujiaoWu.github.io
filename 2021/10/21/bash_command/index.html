@@ -152,30 +152,104 @@
 
         <div id="main" >
             <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 ></h2></a>
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Some common bash commands</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h2 id="Record-some-common-bash-commands"><a href="#Record-some-common-bash-commands" class="headerlink" title="Record some common bash commands"></a>Record some common bash commands</h2><h3 id="Linux-Commands"><a href="#Linux-Commands" class="headerlink" title="Linux Commands"></a>Linux Commands</h3><p><strong>Bash shell commands sheet</strong></p>
+                <h3 id="Linux-Commands"><a href="#Linux-Commands" class="headerlink" title="Linux Commands"></a>Linux Commands</h3><p><strong>Bash shell commands sheet</strong></p>
 <p>#SCP Command#</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp local_file_dir usename@ip_address:remote_dir</span><br></pre></td></tr></table></figure>
+<pre><code>scp local_file_dir usename@ip_address:remote_dir
+</code></pre>
 <p>第一个参数为 ./本地的文件名，第二个参数为 用户名@输入IP地址或者url:/远端的文件名绝对地址<br>*注：传输文件夹，scp加 -r<br>远端传至本地同理<br>#Basic terminal shortcuts</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CTRL A = To start of line</span><br><span class="line">CTRL E = To the end of the line</span><br><span class="line">CTRL U = Delete left of cursor </span><br><span class="line">CTRL K = Delete right of cursor</span><br><span class="line">CTRL W = Delete word on the left </span><br><span class="line">CTRL Y = Paste (after CTRL U,K or W)</span><br><span class="line">CTRL L = Clear the terminal</span><br><span class="line">CTRL Z = Stop the current command</span><br></pre></td></tr></table></figure>
-
+<pre><code>CTRL A = To start of line
+CTRL E = To the end of the line
+CTRL U = Delete left of cursor 
+CTRL K = Delete right of cursor
+CTRL W = Delete word on the left 
+CTRL Y = Paste (after CTRL U,K or W)
+CTRL L = Clear the terminal
+CTRL Z = Stop the current command
+</code></pre>
 <p>#Basic Terminal Navigation</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls = list all files</span><br><span class="line">cd folder name  = change directory</span><br><span class="line">cd / = go to root</span><br><span class="line">cd .. = go to one up folder</span><br><span class="line">pwd  = print working directory</span><br></pre></td></tr></table></figure>
+<pre><code>ls = list all files
+cd folder name  = change directory
+cd / = go to root
+cd .. = go to one up folder
+pwd  = print working directory
+</code></pre>
 <p>#Basic File Manipulation</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mkdir = create a new folder</span><br><span class="line">mkdir myfolder</span><br><span class="line">mkdir mufolder/yj/pics/..</span><br><span class="line"></span><br><span class="line">mv file.txt Documents/ = move to a folder</span><br><span class="line">mv &lt;foldername1&gt; &lt;foldername2&gt; = move folder in folder</span><br><span class="line">mv filename.txt filename2.txt = rename file</span><br><span class="line"> </span><br><span class="line">rm &lt;filename&gt; .. = delete file (s)</span><br><span class="line">rm -i &lt;filename&gt; .. = ask for confirmation each file</span><br><span class="line"></span><br><span class="line">touch &lt;filename&gt; = create or update a file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>mkdir = create a new folder
+mkdir myfolder
+mkdir mufolder/yj/pics/..
+
+mv file.txt Documents/ = move to a folder
+mv &lt;foldername1&gt; &lt;foldername2&gt; = move folder in folder
+mv filename.txt filename2.txt = rename file
+ 
+rm &lt;filename&gt; .. = delete file (s)
+rm -i &lt;filename&gt; .. = ask for confirmation each file
+
+touch &lt;filename&gt; = create or update a file
+</code></pre>
 <ul>
-<li><strong>Vim command</strong><br>#useage<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Two models: command &amp; insert</span><br><span class="line">Insert is for editing, write text ect.</span><br><span class="line">Command is for controlling:</span><br><span class="line">press &#x27;esc &#x27;. it contains multiple commands for various purposes:</span><br><span class="line">gg = go to first line</span><br><span class="line">G = go to last line</span><br><span class="line">col num + gg =  go to line &#x27;num&#x27;</span><br><span class="line">v = visual mode</span><br><span class="line">with up/down/left/right = select words and lines</span><br><span class="line">with num+gg = select multiple lines</span><br><span class="line">U = undo</span><br><span class="line">CTRL + r = redo</span><br><span class="line">y = copy line</span><br><span class="line">yw = copy word</span><br><span class="line">p = paste</span><br><span class="line">dd = delete line</span><br><span class="line">shift + $ = Go to the end of the line</span><br><span class="line">o =  Go to the end of the line and start insert</span><br><span class="line">find and replace = :%s/target word/replace word/gc</span><br><span class="line">page up/ page down = ctl + u / ctl + d</span><br><span class="line">:w = save changes</span><br><span class="line">:wq = save and quit = :x</span><br><span class="line">:q = quit</span><br><span class="line">while multiple tabs we can use</span><br><span class="line">:e + filename (work with CTRLl + ^ to shift between different files with one buffer)</span><br><span class="line">CTRL +w v followed by v to get split screen</span><br><span class="line">to navigate press ctrl W + l</span><br><span class="line">mkdir = new folder</span><br><span class="line">move file to different folder: mv source_file target_folder</span><br><span class="line">move multiple files: mv file1.txt file2.txt file3.txt target_directory</span><br></pre></td></tr></table></figure></li>
+<li><strong>Vim command</strong><br>#useage<pre><code>Two models: command &amp; insert
+Insert is for editing, write text ect.
+Command is for controlling:
+press &#39;esc &#39;. it contains multiple commands for various purposes:
+gg = go to first line
+G = go to last line
+col num + gg =  go to line &#39;num&#39;
+v = visual mode
+with up/down/left/right = select words and lines
+with num+gg = select multiple lines
+U = undo
+CTRL + r = redo
+y = copy line
+yw = copy word
+p = paste
+dd = delete line
+shift + $ = Go to the end of the line
+o =  Go to the end of the line and start insert
+find and replace = :%s/target word/replace word/gc
+page up/ page down = ctl + u / ctl + d
+:w = save changes
+:wq = save and quit = :x
+:q = quit
+while multiple tabs we can use
+:e + filename (work with CTRLl + ^ to shift between different files with one buffer)
+CTRL +w v followed by v to get split screen
+to navigate press ctrl W + l
+mkdir = new folder
+move file to different folder: mv source_file target_folder
+move multiple files: mv file1.txt file2.txt file3.txt target_directory
+</code></pre>
+</li>
 </ul>
 <p>#tmux commands:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ctrl + q with shift+ &quot; for top and bottom split,   with shift+ %  for left and right split</span><br><span class="line">ctrl + q + arrow = shift between windows</span><br><span class="line">ctrl q with z for zoom in/out</span><br><span class="line">ctrl q with c for multiple pane</span><br><span class="line">ctrl q with n for next with p for previous</span><br><span class="line">exit  = kill window</span><br></pre></td></tr></table></figure>
+<pre><code>ctrl + q with shift+ &quot; for top and bottom split,   with shift+ %  for left and right split
+ctrl + q + arrow = shift between windows
+ctrl q with z for zoom in/out
+ctrl q with c for multiple pane
+ctrl q with n for next with p for previous
+exit  = kill window
+</code></pre>
 <p>#My Hexo:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Language: Markdown</span><br><span class="line">Hexo blog: home/hexo_ blog/source/_posts/bash_command.md</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line">generate+deploy = hexo g -d</span><br><span class="line">Check up here: https://yujiaowu.github.io</span><br></pre></td></tr></table></figure>
-
+<pre><code>Language: Markdown
+Hexo blog: home/hexo_ blog/source/_posts/bash_command.md
+hexo generate
+hexo deploy
+generate+deploy = hexo g -d
+Check up here: https://yujiaowu.github.io
+</code></pre>
 <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p>pdb commands summary: <a target="_blank" rel="noopener" href="https://web.stanford.edu/class/physics91si/2013/handouts/Pdb_Commands.pdf">https://web.stanford.edu/class/physics91si/2013/handouts/Pdb_Commands.pdf</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python -m pdb &lt;name&gt;.py #进入pdb调试方法</span><br><span class="line">import pdb #代码里要import pdb</span><br><span class="line">pdb.set_trace() #begin debugger at this line when the file is run normally</span><br><span class="line">n(ext) execute the current line</span><br><span class="line">s(tep) #step into functions called at the current line</span><br><span class="line">c(ontinue) #execute until a breakpoint is encountered</span><br><span class="line">q(uit) #exit the debugger</span><br></pre></td></tr></table></figure>
+<pre><code>python -m pdb &lt;name&gt;.py #进入pdb调试方法
+import pdb #代码里要import pdb
+pdb.set_trace() #begin debugger at this line when the file is run normally
+n(ext) execute the current line
+s(tep) #step into functions called at the current line
+c(ontinue) #execute until a breakpoint is encountered
+q(uit) #exit the debugger
+</code></pre>
 
             </div>
 
