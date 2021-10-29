@@ -156,7 +156,7 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h3 id="解决关于安装xLearn在运行时报错std-logic-error的解决办法："><a href="#解决关于安装xLearn在运行时报错std-logic-error的解决办法：" class="headerlink" title="解决关于安装xLearn在运行时报错std::logic_error的解决办法："></a>解决关于安装xLearn在运行时报错std::logic_error的解决办法：</h3><p>solution refers to：<br><a target="_blank" rel="noopener" href="https://github.com/aksnzhy/xlearn/issues/115">https://github.com/aksnzhy/xlearn/issues/115</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html">https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html</a><br>首先要创建一个crontab文件，然后在文件里进行配置，示例如下：</p>
+                <p>** 解决关于安装xLearn在运行时报错std::logic_error的解决办法:**<br>solution refers to：<br><a target="_blank" rel="noopener" href="https://github.com/aksnzhy/xlearn/issues/115">https://github.com/aksnzhy/xlearn/issues/115</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html">https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html</a><br>首先要创建一个crontab文件，然后在文件里进行配置，示例如下：</p>
 <pre><code>打开文件：
 vim /etc/crontab
 输入命令：
@@ -164,6 +164,12 @@ SHELL=/bin/bash
 PATH=/usr/local/bin/:/usr/local/bin/:/usr/local/bin:/usr/local/bin:/root/miniconda3/bin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=&quot;&quot;HOME=/
 export USER=yujiao
+</code></pre>
+<p>crontab里是系统命令，side-packages里主要是Python的包和库<br>/ 是最高级的目录</p>
+<p>** Linux SSH 远程登录错误解决办法 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!**<br>将known_hosts文件中的与登录错误的IP的公钥删除即可,known_hosts是记录远程主机的公钥</p>
+<pre><code>进入文件：
+vim .ssh/known_hosts
+删除相关地址host即可
 </code></pre>
 
             </div>
