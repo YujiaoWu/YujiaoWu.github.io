@@ -156,12 +156,33 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h3 id="Linux-Commands"><a href="#Linux-Commands" class="headerlink" title="Linux Commands"></a>Linux Commands</h3><p><strong>Bash shell commands sheet</strong></p>
-<p>#SCP Command#</p>
-<pre><code>scp local_file_dir usename@ip_address:remote_dir
+                <h2 id="Linux-Commands"><a href="#Linux-Commands" class="headerlink" title="Linux Commands"></a>Linux Commands</h2><p><strong>Bash shell commands sheet</strong></p>
+<p>根据关键词查询历史命令：<br>hist 然后直接输入！数字，就可以执行操作 </p>
+<pre><code>hist
+!987
 </code></pre>
-<p>第一个参数为 ./本地的文件名，第二个参数为 用户名@输入IP地址或者url:/远端的文件名绝对地址<br>*注：传输文件夹，scp加 -r<br>远端传至本地同理<br>#Basic terminal shortcuts</p>
-<pre><code>CTRL A = To start of line
+<p>三个最常用的环境路径：</p>
+<pre><code>输入$PATH 就可以得到系统变量的值
+$LIBRARY_PATH
+$LD_LIBRARY_PATH
+</code></pre>
+<p>获取某文件的完整地址：<br>用:w 写入后可以显示文件名，完整地址获取如下:</p>
+<pre><code>readlink -f test.py
+比如获取test.py地址: readlink -f test.py
+</code></pre>
+<p>#SCP Command#</p>
+<pre><code>简易写法：scp [可选参数] file_source file_target
+命令格式：scp local_file remote_username@remote_ip:remote_folder
+一个栗子：scp -r -P 36392 ./small*.txt yaxiong@202.117.43.216:/data0/yaxiong/yujiao/ 
+</code></pre>
+<p>第一个参数为 ./本地的文件名，第二个参数为 用户名@输入IP地址或者url:/远端的文件名绝对地址<br>*注：</p>
+<ul>
+<li>传输文件夹，scp加 -r </li>
+<li>远程服务器防火墙有为scp命令设置了指定的端口，我们需要使用 -P 参数来设置命令的端口号.</li>
+<li>从远程复制到本地，只要将从本地复制到远程的命令的后2个参数调换顺序即可</li>
+</ul>
+<p>sxd机器的一些信息：<br>ssh <a href="mailto:&#x79;&#x75;&#106;&#x69;&#x61;&#111;&#64;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#55;&#46;&#49;&#53;&#51;">&#x79;&#x75;&#106;&#x69;&#x61;&#111;&#64;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#55;&#46;&#49;&#53;&#51;</a><br>password：123789<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/</p>
+<h3 id="Basic-terminal-shortcuts"><a href="#Basic-terminal-shortcuts" class="headerlink" title="Basic terminal shortcuts"></a>Basic terminal shortcuts</h3><pre><code>CTRL A = To start of line
 CTRL E = To the end of the line
 CTRL U = Delete left of cursor 
 CTRL K = Delete right of cursor
@@ -170,15 +191,13 @@ CTRL Y = Paste (after CTRL U,K or W)
 CTRL L = Clear the terminal
 CTRL Z = Stop the current command
 </code></pre>
-<p>#Basic Terminal Navigation</p>
-<pre><code>ls = list all files
+<h3 id="Basic-Terminal-Navigation"><a href="#Basic-Terminal-Navigation" class="headerlink" title="Basic Terminal Navigation"></a>Basic Terminal Navigation</h3><pre><code>ls = list all files
 cd folder name  = change directory
 cd / = go to root
 cd .. = go to one up folder
 pwd  = print working directory
 </code></pre>
-<p>#Basic File Manipulation</p>
-<pre><code>mkdir = create a new folder
+<h3 id="Basic-File-Manipulation"><a href="#Basic-File-Manipulation" class="headerlink" title="Basic File Manipulation"></a>Basic File Manipulation</h3><pre><code>mkdir = create a new folder
 mkdir myfolder
 mkdir mufolder/yj/pics/..
 
@@ -191,8 +210,7 @@ rm -i &lt;filename&gt; .. = ask for confirmation each file
 
 touch &lt;filename&gt; = create or update a file
 </code></pre>
-<ul>
-<li><strong>Vim command</strong><br>#useage<pre><code>Two models: command &amp; insert
+<h2 id="Vim-command"><a href="#Vim-command" class="headerlink" title="Vim command"></a><strong>Vim command</strong></h2><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><pre><code>Two models: command &amp; insert
 Insert is for editing, write text ect.
 Command is for controlling:
 press &#39;esc &#39;. it contains multiple commands for various purposes:
@@ -223,8 +241,6 @@ mkdir = new folder
 move file to different folder: mv source_file target_folder
 move multiple files: mv file1.txt file2.txt file3.txt target_directory
 </code></pre>
-</li>
-</ul>
 <p>#tmux commands:</p>
 <pre><code>ctrl + q with shift+ &quot; for top and bottom split,   with shift+ %  for left and right split
 ctrl + q + arrow = shift between windows
@@ -312,8 +328,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/10/21/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/10/21/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/10/29/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/10/29/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
