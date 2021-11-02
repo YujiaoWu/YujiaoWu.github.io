@@ -181,7 +181,7 @@ $LD_LIBRARY_PATH
 <li>远程服务器防火墙有为scp命令设置了指定的端口，我们需要使用 -P 参数来设置命令的端口号.</li>
 <li>从远程复制到本地，只要将从本地复制到远程的命令的后2个参数调换顺序即可</li>
 </ul>
-<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#121;&#117;&#106;&#x69;&#97;&#111;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#55;&#x2e;&#x31;&#53;&#x33;">&#121;&#117;&#106;&#x69;&#97;&#111;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#54;&#56;&#x2e;&#55;&#x2e;&#x31;&#53;&#x33;</a><br>password：123789<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/</p>
+<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#x79;&#x75;&#106;&#x69;&#97;&#x6f;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#55;&#46;&#49;&#53;&#51;">&#x79;&#x75;&#106;&#x69;&#97;&#x6f;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#55;&#46;&#49;&#53;&#51;</a><br>改变网卡可能改变ip地址，用命令<code>ifconfig</code>来查询<br>password：123789<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/</p>
 <h3 id="Basic-terminal-shortcuts"><a href="#Basic-terminal-shortcuts" class="headerlink" title="Basic terminal shortcuts"></a><strong>Basic terminal shortcuts</strong></h3><pre><code>CTRL A = To start of line
 CTRL E = To the end of the line
 CTRL U = Delete left of cursor 
@@ -210,7 +210,10 @@ rm -i &lt;filename&gt; .. = ask for confirmation each file
 
 touch &lt;filename&gt; = create or update a file
 </code></pre>
-<h2 id="Vim-command"><a href="#Vim-command" class="headerlink" title="Vim command"></a><strong>Vim command</strong></h2><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a><strong>usage</strong></h3><pre><code>Two models: command &amp; insert
+<h2 id="Vim-command"><a href="#Vim-command" class="headerlink" title="Vim command"></a><strong>Vim command</strong></h2><h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a><strong>usage</strong></h3><p>Useful links </p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="https://linuxhandbook.com/basic-vim-commands/#:~:text=Basic%20Vim%20Commands%20You%20Should%20Know%201%20Understand,Saving%20and%20quitting%20Vim.%20...%20More%20items...%20">https://linuxhandbook.com/basic-vim-commands/#:~:text=Basic%20Vim%20Commands%20You%20Should%20Know%201%20Understand,Saving%20and%20quitting%20Vim.%20...%20More%20items...%20</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.fprintf.net/vimCheatSheet.html">https://www.fprintf.net/vimCheatSheet.html</a><pre><code>Two models: command &amp; insert
 Insert is for editing, write text ect.
 Command is for controlling:
 press &#39;esc &#39;. it contains multiple commands for various purposes:
@@ -241,6 +244,8 @@ mkdir = new folder
 move file to different folder: mv source_file target_folder
 move multiple files: mv file1.txt file2.txt file3.txt target_directory
 </code></pre>
+</li>
+</ul>
 <h2 id="tmux-commands"><a href="#tmux-commands" class="headerlink" title="tmux commands"></a><strong>tmux commands</strong></h2><pre><code>ctrl + q with shift+ &quot; for top and bottom split,   with shift+ %  for left and right split
 ctrl + q + arrow = shift between windows
 ctrl q with z for zoom in/out
