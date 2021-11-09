@@ -191,7 +191,7 @@
 <li>用户与标的物的交汇行为信息：<br>这包括用户的点击，播放，收藏，搜索，点赞，等各种隐式行为。这些行为可以通过平展化的方式整合为特征。比如有n个用户，m个标的物，那么用户对某个标的物的行为可平展化为n+m维特子向量，特征用0或1表示，有隐式操作为1，否则为0.<br>也可将用户的每一种操作作为一个维度，每个维度的值代表用户是否操作过或者对应的操作得分(比如用户播放时长占视频总时长的比例作为得分)。</li>
 <li>用户的相关信息：<br>相关信息有很多，包括人口统计学信息，如年龄，性别，职业，收入，地域，受教育程度等，还可以包括用户的行为信息，比如用户是否是会员、什么时候注册的、最后一次登录时间、最后一次付费时间等。这些信息都可以作为某一个维度的特征灌入到FM模型中。</li>
 <li>标的物相关信息：<br>标的物的metadata信息都可以作为FM的特征，拿电影推荐来说，电影的评分、年代、标签、演职表、是否获奖、是否高清、地区、语言、是否付费节目等都可以作为特征。其中评分年代是数值特征，标签、演职员表示类别特征，可以采用one-hot 编码（每个电影有多个标签，对应标签上的值为1，所以这里叫做n-hot编码，而不是one-hot）。另外节目的用户行为也可以作为特征，比如节目播放次数，节目平均播放完成度等。</li>
-<li>上下文信息：<br>用户在操作标的物时是包含上下文信息的，这类上下文有时间、地点、上一步操作、所在路径，甚至是天气、心情、操作系统、版本等内容。时间可以是操作时间、是否工作日、特殊日期(如双十一)等。地域对于LBS(Location Based Service，基于地理位置的服务，如美团，滴滴等)类应用非常重要。对于购物等具备漏斗行为转化的产品或业务，用户的上一步操作及所在路径对训练模型非常关键。<br>博士论文包含FM 做推荐的各种细节和方法：<br>Advanced Factorization Models for Recommender Systems Link:<a target="_blank" rel="noopener" href="https://repository.tudelft.nl/islandora/object/uuid:0b91c68f-4da7-4745-8d08-c39c0bb00e81?collection=research">https://repository.tudelft.nl/islandora/object/uuid:0b91c68f-4da7-4745-8d08-c39c0bb00e81?collection=research</a></li>
+<li>上下文信息：<br>用户在操作标的物时是包含上下文信息的，这类上下文有时间、地点、上一步操作、所在路径，甚至是天气、心情、操作系统、版本等内容。时间可以是操作时间、是否工作日、特殊日期(如双十一)等。地域对于LBS(Location Based Service，基于地理位置的服务，如美团，滴滴等)类应用非常重要。对于购物等具备漏斗行为转化的产品或业务，用户的上一步操作及所在路径对训练模型非常关键。<br>博士论文包含FM 做推荐的各种细节和方法：<br>Advanced Factorization Models for Recommender Systems Link: <a target="_blank" rel="noopener" href="https://repository.tudelft.nl/islandora/object/uuid:0b91c68f-4da7-4745-8d08-c39c0bb00e81?collection=research">https://repository.tudelft.nl/islandora/object/uuid:0b91c68f-4da7-4745-8d08-c39c0bb00e81?collection=research</a><h3 id="深度学习在推荐系统中的应用："><a href="#深度学习在推荐系统中的应用：" class="headerlink" title="深度学习在推荐系统中的应用："></a>深度学习在推荐系统中的应用：</h3>对深度学习发展历史进行了非常好的总结和梳理”On the Origin of Deep Learning“ link：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1702.07800#">https://arxiv.org/abs/1702.07800#</a><br>深度学习推荐系统综述：Deep Learning based Recommender System: A Survey and New Perspectives“ links：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1707.07435v4">https://arxiv.org/abs/1707.07435v4</a></li>
 </ul>
 <h3 id="Some-FM-related-code"><a href="#Some-FM-related-code" class="headerlink" title="Some FM related code:"></a>Some FM related code:</h3><p><a target="_blank" rel="noopener" href="https://github.com/coreylynch/pyFM">https://github.com/coreylynch/pyFM</a><br>Factorization machines in python<br>857 stars</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Johnson0722/CTR_Prediction">https://github.com/Johnson0722/CTR_Prediction</a><br>CTR prediction using FM FFM and DeepFM<br>718 stars</p>
@@ -301,8 +301,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/01/recommendation_system/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/11/01/recommendation_system/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/11/08/recommendation_system/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/11/08/recommendation_system/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 

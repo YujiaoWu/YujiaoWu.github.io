@@ -159,7 +159,9 @@
                 <p>关于pandas的一些命令和bugs：</p>
 <pre><code>df = pandas.read_csv(&#39;filename.csv&#39;,sep=&#39;\t&#39;,usecols=[&#39;Unnamed: 0&#39;, &#39;user&#39;, &#39;item&#39;]) #读取csv文件的指定几列并且用\t隔开
 list(df) #列出读出的csv文件的所有列的列名
-df[0:10] #取前10行
+list(df.columns) #列出文件所有行的行名
+
+df[0:10] or df.head(10)#取前10行
 
 pd.get_dummies() #是对categorical类型数据进行onehot编码
 df1 = pd.get_dummies(df.astype(str)) #如果数据中包含有numeric类型，就要先把数值转换成string然后再进行onehot
@@ -173,7 +175,45 @@ PATH=/usr/local/bin/:/usr/local/bin/:/usr/local/bin:/usr/local/bin:/root/minicon
 MAILTO=&quot;&quot;HOME=/
 export USER=yujiao
 </code></pre>
-<p>crontab里是系统命令，side-packages里主要是Python的包和库<br>/ 是最高级的目录</p>
+<p>crontab里是系统命令，side-packages里主要是Python的包和库<br>/ 是最高级的目录<br>运行其它二进制的程序也一样，直接写vim /etc/crontab，linux系统会去PATH里寻找有没有叫crontab的，除此之外/bin, /sbin, /usr/bin，/usr/sbin等也在PATH里.如果在当前目录运行一个test.sh文件，就要用./test.sh告诉系统说，就在当前目录找。</p>
+<p><strong>xLearn所需数据格式</strong><br>对于 LR 和 FM 算法而言，我们的输入数据格式必须是 CSV 或者 libsvm. 对于 FFM 算法，我们的输入数据必须是 libffm 格式:</p>
+<pre><code>libsvm format:
+
+   y index_1:value_1 index_2:value_2 ... index_n:value_n
+
+   0   0:0.1   1:0.5   3:0.2   ...
+   0   0:0.2   2:0.3   5:0.1   ...
+   1   0:0.2   2:0.3   5:0.1   ...
+
+CSV format:
+
+   y value_1 value_2 .. value_n
+
+   0      0.1     0.2     0.2   ...
+   1      0.2     0.3     0.1   ...
+   0      0.1     0.2     0.4   ...
+
+libffm format:
+
+   y field_1:index_1:value_1 field_2:index_2:value_2   ...
+
+   0   0:0:0.1   1:1:0.5   2:3:0.2   ...
+   0   0:0:0.2   1:2:0.3   2:5:0.1   ...
+   1   0:0:0.2   1:2:0.3   2:5:0.1   ...
+</code></pre>
+<p>xLearn 还可以使用 , 作为数据的分隔符:</p>
+<pre><code>libsvm format:
+
+   label,index_1:value_1,index_2:value_2 ... index_n:value_n
+
+CSV format:
+
+   label,value_1,value_2 .. value_n
+
+libffm format:
+
+   label,field_1:index_1:value_1,field_2:index_2:value_2 ...
+</code></pre>
 <p><strong>Linux SSH 远程登录错误解决办法 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</strong><br>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/nahancy/article/details/51052127">https://blog.csdn.net/nahancy/article/details/51052127</a><br>将known_hosts文件中的与登录错误的IP的公钥删除即可,known_hosts是记录远程主机的公钥</p>
 <pre><code>进入文件：
 vim .ssh/known_hosts
@@ -241,8 +281,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/03/bugs_record/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/11/03/bugs_record/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/11/08/bugs_record/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/11/08/bugs_record/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
