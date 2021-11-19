@@ -187,7 +187,7 @@ scp -r yujiao@192.168.7.153:/home/yujiao/fxdata/Mobile_Frappe/frappe/frappe_1_co
 </code></pre>
 </li>
 </ul>
-<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#121;&#x75;&#106;&#x69;&#97;&#111;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#x36;&#56;&#46;&#x37;&#46;&#x31;&#x35;&#51;">&#121;&#x75;&#106;&#x69;&#97;&#111;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#x36;&#56;&#46;&#x37;&#46;&#x31;&#x35;&#51;</a><br>改变网卡可能改变ip地址，用命令<code>ifconfig</code>来查询<br>password：123789<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。</p>
+<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#x79;&#117;&#106;&#105;&#x61;&#111;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#x38;&#x2e;&#55;&#x2e;&#49;&#x35;&#51;">&#x79;&#117;&#106;&#105;&#x61;&#111;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#x38;&#x2e;&#55;&#x2e;&#49;&#x35;&#51;</a><br>改变网卡可能改变ip地址，用命令<code>ifconfig</code>来查询<br>password：123789<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。</p>
 <pre><code>#Enter ubuntu20 python(default)
 source ~/.bashrc
 #Enter anaconda3 env
@@ -301,6 +301,62 @@ s(tep) #step into functions called at the current line
 c(ontinue) #execute until a breakpoint is encountered
 q(uit) #exit the debugger
 </code></pre>
+<h2 id="PANDAS"><a href="#PANDAS" class="headerlink" title="PANDAS"></a><strong>PANDAS</strong></h2><pre><code>df.head(10) #只选出头部10条
+df.columns #展示出所有列名
+df[&#39;state&#39;] #检索某一列可以是任意列名
+df.time #只能检索存在的列名
+df.loc[&#39;three&#39;] #用特殊属性loc取指定行
+df01 = pd.DataFrame(df,columns=[&#39;col1&#39;,&#39;col2&#39;,&#39;col3&#39;]) #取需要的列，比如去col1 col2 col3
+df01 = df.drop([&#39;row1&#39;,&#39;row2&#39;]) #根据行标删除行(轴0)
+df.drop(&#39;col1&#39;, axis=1) or df.drop(&#39;col1&#39;, axis=&#39;col1&#39;)#从列中删除值设置 axis=1 or axis=&#39;columns&#39;
+df01 = pd.drop([&#39;col1&#39;,&#39;col2&#39;], axis = 1) #从列中删除多个值
+df[&#39;col1&#39;] #索引一列
+df[[&#39;col1&#39;,&#39;col2&#39;]] #索引多列
+df[:2] 布尔数组切片前两行
+df[df[&#39;state&#39;] &gt; 5] #判断state列中大于5的，并取出该行
+用轴标签loc和整数标签iloc选择数据
+df.loc[&#39;row1&#39;,[&#39;col1&#39;,&#39;col2&#39;]] #选出单行多列
+df.iloc[2,[3,0,1]] #用整数标签iloc选出单行多列
+df.loc[val] #根据标签选择df的单行或多行
+df.loc[:,val] #根据标签选择单列或多列
+df.loc[val1, val2] #同时选择行和列中的一部分
+df.iloc[where] #根据整数位置选择单行或多行
+df.iloc[:,where] #根据整数位置选择单列或多列
+df.iloc[where_i, where_j] #根据整数位置选择行和列
+df.nunique() #计算列的唯一值
+</code></pre>
+<p><strong>排序和排名</strong></p>
+<pre><code>sort_index
+</code></pre>
+<p><strong>文件载入存储和文件格式</strong></p>
+<pre><code>df = pd.read_csv(&#39;exapmles/ex1.csv&#39;)
+df = pd.read_csv(&#39;examples/ex1.csv&#39;, header=None) #自动分配默认列名
+df = pd.read_csv(&#39;example/ex1.csv&#39;, names=[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;message&#39;]) #自己指定列名
+</code></pre>
+<p><strong>大文件分块读入</strong></p>
+<pre><code>pd.options.display.max_rows = 10 #对pandas进行调整，使之更加紧凑
+pd.read_csv(&#39;examples/ex6.csv&#39;,nrows=5) #只读取一小部分行，不读取整个文件，可以指明nrows
+</code></pre>
+<p><strong>将数据写入文本格式</strong><br>df.to_csv(‘example/out.csv’) #数据导出为逗号分隔的文件<br>import sys<br>df.to_csv(sys.stdout, sep=’|’) #数据导出为用|分隔<br>df.to_csv(sys.stdout, na_rep = ‘NULL’) #缺失值在输出时以空字符出现，可用其他标示值如NULL对缺失值进行标注<br>df.to_csv(sys.stout, index = False, header=False) #禁止行列标签被写入<br>df.to_csv(sys.stout, index = False, columns=[‘a’,’b’,’c’]) #仅写入列的子集，并且按照你选择的顺序写入</p>
+<pre><code>**读取excel文件**
+需要使用pip conda手动安装 xlrd，openpyxl来读取XLS, XLSX
+通过将xls或xlsx的路径传入，生成一个实例
+```xlsx = pd.ExcelFile(&#39;examples/ex1.xlsx&#39;) ```
+存储在表中的数据可以通过``` pd.read_excel(xlsx, &#39;Sheet1&#39;) ``` 读取到DataFrame中
+### **数据清洗与准备**
+** 处理缺失值**
+**过滤缺失值**
+**补全缺失值**
+
+### **数据转换**
+**删除重复值**
+**用函数和映射进行转换**
+**替代值**
+**离散化和分箱**
+**检测和过滤异常值**
+**置换和随机抽样**
+### **字符串操作**
+</code></pre>
 
             </div>
 
@@ -363,8 +419,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/09/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/11/09/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/11/19/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/11/19/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
