@@ -156,7 +156,11 @@
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p><strong>忘记Ubuntu密码如何重新设置</strong><br>进入系统时选择：Advanced options for Ubuntu<br>然后选择带( recovery mode)的选项.<br>进入恢复模式后选择：root  Drop to root shell prompt.<br>然后分为以下两种情况：</p>
+                <p><strong>密码修改后无法进入neo4j报错：Login keyring password “no longer matches”</strong></p>
+<pre><code>移除login.keyring 即可
+rm ~/.local/share/keyrings/login.keyring
+</code></pre>
+<p><strong>忘记Ubuntu密码如何重新设置</strong><br>进入系统时选择：Advanced options for Ubuntu<br>然后选择带( recovery mode)的选项.<br>进入恢复模式后选择：root  Drop to root shell prompt.<br>然后分为以下两种情况：</p>
 <pre><code>a. 若直接输入：passwd (则为修改root密码, 无论你之前是否设置了root密码，因为没有提示需要输入之前的root密码，所以可以直接修改)
 输入新密码：#
 再输入一遍密码：#
@@ -293,8 +297,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/19/bugs_record/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/11/19/bugs_record/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2021/11/22/bugs_record/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2021/11/22/bugs_record/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
