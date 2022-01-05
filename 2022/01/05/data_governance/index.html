@@ -167,7 +167,11 @@
 <p>2.方案：</p>
 <p>补历史：要做什么？<br>36期历史数据。。。<br>入库验证的环节是在什么阶段?他是一个兜底保障的事情，收尾一定要做，中间要不要做，是有灵活调整空间的–需要和产品去对，明确策略<br>36期历史数每期是否要做，需要再去跟客户对，用户诉求和资源要对齐，整个过程控制要保证是严谨的。<br>目标1：怎么做？补缺–自己怎麽做的，还需要别人帮助去做什么？招行需要<br>目标2：计划？交付的内容</p>
 <p>存量是一次性的事情，主要是交互平台的责任划分，和IT的责任划分。</p>
-<p>当前最急的事情：数据存放，数据流，职责 –罗总<br>总数据量：240TB，日吞吐量100TB，仓库<br>交换平台存储时间是2天，配置一下把两天转变为存储30天<br>数仓 治理 监管报送当前的局势，平台衔接，DAP没有太强的管控，数据资产的优质化，和支撑，监管视角，的监管要求有哪些支撑即可， 自己要想清楚推动DAP， 我们给技术中心领导汇报，让领导给数资中心汇报，零售和对公。 行动的路线图，有一个初步、大体的框架，交付就是分为两个，第一个就是春节前，第二个就是技术中心汇报，互相明确目标。开始要做平台，平台层面的支撑，报送平台在哪儿做，基础设施vs我的垂直领域，我们的数据源头也是平台支撑者<br>DAP，<br>第三块是，报送的数据如何让他们快速使用？分析集群如果不满足监管的需求，最重点的是业务用户；</p>
+<p>当前最急的事情：数据存放，数据流，职责 –罗总<br>总数据量：240TB，日吞吐量100TB，仓库<br>交换平台存储时间是2天，配置一下把两天转变为存储30天<br>数仓 治理 监管报送当前的局势，平台衔接，DAP没有太强的管控，数据资产的优质化，和支撑，监管视角，的监管要求有哪些支撑即可， 自己要想清楚推动DAP， 我们给技术中心领导汇报，让领导给数资中心汇报，零售和对公。 行动的路线图，有一个初步、大体的框架，交付就是分为两个，第一个就是春节前，第二个就是技术中心汇报，互相明确目标。开始要做平台，平台层面的支撑，报送平台在哪儿做，基础设施vs我的垂直领域，我们的数据源头也是平台支撑者<br>DAP，</p>
+<p>** 20220501和王泉冰欣的会议**<br>场景1：高斯集群A他们的数据推至交换平台<br>DMO不能上调度？是的，<br>源端做完校验还需要人工去做吗？有异常人工去做，没有异常是???<br>交换平台是库到库的，那我们就没有必要做DMO?<br>第三块是，报送的数据如何让他们快速使用？分析集群如果不满足监管的需求，最重点的是业务用户；<br>序号      场景          源系统        数据推送区     源端校验     数据交换      监管接口     校验复核     监管整合<br>1      交换平台     GaussA/TD      Amart         Y           DXP          Y              Y          Y<br>            Oracle/Hive                       DXP          Y          Y          Y<br>            补录                                   DXP          Y          Y          Y<br>     虚拟回流    GaussB         Amart           Y           SVF          N          Y          Y（建议直接访问）</p>
+<pre><code> NDS        交换系统     NDS
+</code></pre>
+<p>高斯是树状结构还是schema？不清楚<br>高斯AB都有AmartA和AmartB<br>DUP是上调度的，是表到表，是Amart到amart，不落NDS，落地不落地不清楚，但他不用经过交换平台。<br>业务系统和Hive Oracle有什么区别？<br>BMART比AMART少很多?<br>监管数据可能会重跑，每次校验是针对一个表吗还是一批比如二十张表？<br>校验结果表可以在里面写校验结果，是有先后顺序的？是通过交叉校验后才取复核规则的？<br>交叉校验规则是谁定的？公共的是我们解读，个性化的他们自己补<br>源端校验都是上游来做，数据抽取统一是由我们来取，现在的校验可以是手工的吗？历史数据是手工<br>DUP作业生成由我们来写，作业配置触发（同步作业）由他们来进行<br>我们需要给建议，告诉他们这个作业怎么配<br>复核校验一定要搬过来再做吗？在他们那儿做需要权限<br>复核校验规则是一样的吗？监管规则应该是一样的，但是有可能误操作，这个再考率。没必要放在源端去复核。</p>
 
             </div>
 
@@ -230,8 +234,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2022/01/04/data_governance/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2022/01/04/data_governance/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2022/01/05/data_governance/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2022/01/05/data_governance/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
