@@ -152,88 +152,35 @@
 
         <div id="main" >
             <div class ="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Record Some Bugs</h2></a>
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 ></h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p><strong>密码修改后无法进入neo4j报错：Login keyring password “no longer matches”</strong></p>
-<pre><code>移除login.keyring 即可
-rm ~/.local/share/keyrings/login.keyring
+                <h1 id="pytorch-amp-mindspore"><a href="#pytorch-amp-mindspore" class="headerlink" title="**pytorch &amp; mindspore"></a>**pytorch &amp; mindspore</h1><p>云脑二的镜像无需安装mindspore，已配置好，如需个性化的安装包，则需自动定义镜像就好<br>手动安装mindspore在GPU上：</p>
+<pre><code>#查看ubuntu版本是否为18.0
+lsb_release -a
+#查看CUDA版本：
+nvcc -V
+
+autograd自动求导:
+自动求导是计算一个函数在指定值上的导数
+是求导数的具体值而不是求求导公式
+计算图：
+分显式和隐式，用公式定义的是显式-静态，用Python控制流定义的计算图是隐式or动态。
+梯度：使得一个函数值增加最快速的方向
+负梯度：使得函数值下降最快速的方向
+计算梯度，是整个模型训练最贵的部分，要尽量少算梯度。
+小批量随机梯度下降--整个训练集上算梯度太贵，随机抽取b个样本来近似损失， 降低运算成本，b是批量大小--重要的超参数。
+pytorch
 </code></pre>
-<p><strong>忘记Ubuntu密码如何重新设置</strong><br>进入系统时选择：Advanced options for Ubuntu<br>然后选择带( recovery mode)的选项.<br>进入恢复模式后选择：root  Drop to root shell prompt.<br>然后分为以下两种情况：</p>
-<pre><code>a. 若直接输入：passwd (则为修改root密码, 无论你之前是否设置了root密码，因为没有提示需要输入之前的root密码，所以可以直接修改)
-输入新密码：#
-再输入一遍密码：#
-
-b. 若输入： passwd yujiao （ 则为修改一般用户密码，yujiao是系统创建过的用户）
-输入新密码：#
-再输入一遍密码：#
-
-看到password updated successfully即为成功
-最后记得输入reboot重启，如果直接输入exit有可能没有保存刚才的设置。
-</code></pre>
-<p>关于pandas的一些命令和bugs：</p>
-<pre><code>df = pandas.read_csv(&#39;filename.csv&#39;,sep=&#39;\t&#39;,usecols=[&#39;Unnamed: 0&#39;, &#39;user&#39;, &#39;item&#39;]) #读取csv文件的指定几列并且用\t隔开
-list(df) #列出读出的csv文件的所有列的列名
-list(df.columns) #列出文件所有行的行名
-
-df[0:10] or df.head(10)#取前10行
-
-pd.get_dummies() #是对categorical类型数据进行onehot编码
-df1 = pd.get_dummies(df.astype(str)) #如果数据中包含有numeric类型，就要先把数值转换成string然后再进行onehot
-</code></pre>
-<p><strong>解决关于安装xLearn在运行时报错std::logic_error的解决办法:</strong><br>solution refers to：<br><a target="_blank" rel="noopener" href="https://github.com/aksnzhy/xlearn/issues/115">https://github.com/aksnzhy/xlearn/issues/115</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html">https://www.cnblogs.com/peida/archive/2013/01/08/2850483.html</a><br>首先要创建一个crontab文件，然后在文件里进行配置，示例如下：</p>
-<pre><code>打开文件：
-vim /etc/crontab
-输入命令：
-SHELL=/bin/bash
-PATH=/usr/local/bin/:/usr/local/bin/:/usr/local/bin:/usr/local/bin:/root/miniconda3/bin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO=&quot;&quot;HOME=/
-export USER=yujiao
-</code></pre>
-<p>crontab里是系统命令，side-packages里主要是Python的包和库<br>/ 是最高级的目录<br>运行其它二进制的程序也一样，直接写vim /etc/crontab，linux系统会去PATH里寻找有没有叫crontab的，除此之外/bin, /sbin, /usr/bin，/usr/sbin等也在PATH里.如果在当前目录运行一个test.sh文件，就要用./test.sh告诉系统说，就在当前目录找。</p>
-<p><strong>xLearn所需数据格式</strong><br>对于 LR 和 FM 算法而言，我们的输入数据格式必须是 CSV 或者 libsvm. 对于 FFM 算法，我们的输入数据必须是 libffm 格式:</p>
-<pre><code>libsvm format:
-
-   y index_1:value_1 index_2:value_2 ... index_n:value_n
-
-   0   0:0.1   1:0.5   3:0.2   ...
-   0   0:0.2   2:0.3   5:0.1   ...
-   1   0:0.2   2:0.3   5:0.1   ...
-
-CSV format:
-
-   y value_1 value_2 .. value_n
-
-   0      0.1     0.2     0.2   ...
-   1      0.2     0.3     0.1   ...
-   0      0.1     0.2     0.4   ...
-
-libffm format:
-
-   y field_1:index_1:value_1 field_2:index_2:value_2   ...
-
-   0   0:0:0.1   1:1:0.5   2:3:0.2   ...
-   0   0:0:0.2   1:2:0.3   2:5:0.1   ...
-   1   0:0:0.2   1:2:0.3   2:5:0.1   ...
-</code></pre>
-<p>xLearn 还可以使用 , 作为数据的分隔符:</p>
-<pre><code>libsvm format:
-
-   label,index_1:value_1,index_2:value_2 ... index_n:value_n
-
-CSV format:
-
-   label,value_1,value_2 .. value_n
-
-libffm format:
-
-   label,field_1:index_1:value_1,field_2:index_2:value_2 ...
-</code></pre>
-<p><strong>Linux SSH 远程登录错误解决办法 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</strong><br>参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/nahancy/article/details/51052127">https://blog.csdn.net/nahancy/article/details/51052127</a><br>将known_hosts文件中的与登录错误的IP的公钥删除即可,known_hosts是记录远程主机的公钥</p>
-<pre><code>进入文件：
-vim .ssh/known_hosts
-删除相关地址host即可
+<p>x = torch.arange(4.0) #一定是float型不然会报错无法求梯度<br>x.requires_grad_(True) #计算梯度前要写这句，表示把梯度要保存在某处。注意写法 <em>grad</em><br>x.grad #查看所保存的梯度是啥<br>y = 2 * torch.dot(x * x)  #y有一个grad_fn,因为是隐式计算图，意为y的梯度是x<br>y</p>
+<pre><code>arg min意为求损失函数最小时候得参数值(变量的取值)
+线性回归是对n维输入的加权，外加偏差
+使用平方损失来衡量预测值和真实值的差异
+线性回归有显示解()
+线性回归可以看做单层神经网络
+从零开始实现线性回归：
+reshape(-1, 1) 列数为1 行数自动调整
 </code></pre>
 
             </div>
@@ -297,8 +244,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/22/bugs_record/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2021/11/22/bugs_record/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2022/06/17/pytorch_mindspore/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2022/06/17/pytorch_mindspore/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 

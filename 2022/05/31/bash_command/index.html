@@ -187,7 +187,7 @@ scp -r yujiao@192.168.7.153:/home/yujiao/fxdata/Mobile_Frappe/frappe/frappe_1_co
 </code></pre>
 </li>
 </ul>
-<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#121;&#x75;&#106;&#x69;&#x61;&#111;&#64;&#x31;&#57;&#x32;&#x2e;&#49;&#x36;&#x38;&#46;&#55;&#46;&#49;&#x35;&#x33;">&#121;&#x75;&#106;&#x69;&#x61;&#111;&#64;&#x31;&#57;&#x32;&#x2e;&#49;&#x36;&#x38;&#46;&#55;&#46;&#49;&#x35;&#x33;</a><br>改变网卡可能改变ip地址，用命令<code>ifconfig</code>来查询<br>password：123789<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。</p>
+<p><strong>sxd机器的一些信息</strong><br>ssh <a href="mailto:&#121;&#117;&#x6a;&#105;&#97;&#x6f;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x37;&#x2e;&#x31;&#53;&#51;">&#121;&#117;&#x6a;&#105;&#97;&#x6f;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#x2e;&#x37;&#x2e;&#x31;&#53;&#51;</a><br>改变网卡可能改变ip地址，用命令<code>ifconfig</code>来查询<br>password：123789<br>一些安装包和驱动备份：显卡、网卡驱动，anaconda，cmake，openssl，chrome，lantern 位置： /home/yujiao/Downloads/ubuntu_backup/<br>几个环境配置记录在：/home/yujiao/cmd.txt 其中ubuntu20是初始环境，ven01和02都是配置在anaconda下的。</p>
 <pre><code>#Enter ubuntu20 python(default)
 source ~/.bashrc
 #Enter anaconda3 env
@@ -369,6 +369,7 @@ nvidia-docker start -i yaxiong_yujiao
 if--in--for--break--and--def--not--while--else--False--return--try--except--True--import--continue--
 if 条件：
 </code></pre>
+<p>if 情况1:<br>elif 情况2:<br>elif 情况3:<br>else 其他所有情况:<br>…</p>
 <p>if 2==4:<br>    print(‘GOD!’)<br>    print(‘GOD1!’)<br>else:<br>    print(‘GOD2!’)<br>print(‘GOD3!’)</p>
 <pre><code>in 遍历or是否在另一
 for 循环 
@@ -376,6 +377,15 @@ break 打断
 and 同时
 def 定义函数
 </code></pre>
+<p>列表：a = [1,2,3] 可对其中元素进行修改编辑 a[0]=2 or ‘2’<br>元组: b = (4,5,6) 无法对元素进行编辑或修改<br>转义符： /  % 若需转义本身则需要用两次如：// %%<br>print中使用’’或””无差别，但如需使用’’,则要用”” 如：print(“the number of ‘tree’ is %d “, % 4)<br>non-zero vs zero vs null/none vs undefined（厕纸）<br>pass – 做了一件啥也没做的事情，占位<br>help() – 快速查询函数用法</p>
+<h1 id="MuLi"><a href="#MuLi" class="headerlink" title="**MuLi"></a>**MuLi</h1><p>sudo apt install python<br>miniconda: copy link then </p>
+<pre><code>wget http://....
+bash Miniconda***.sh
+bash命令是进入conda环境
+
+** Conda常用命令
+</code></pre>
+<p>conda list #查看安装了哪些包<br>conda env list #查看有哪些虚拟环境<br>conda create -n your_env_name python=x.x  #conda创建虚拟环境<br>source activate your_env_name  #激活切换虚拟环境<br>source deactivate  #关闭虚拟环境<br>conda remove -n your_env_name –all   #删除虚拟环境<br>conda remove –name $your_env_name $package_name</p>
 
             </div>
 
@@ -438,8 +448,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2022/05/13/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2022/05/13/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2022/05/31/bash_command/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2022/05/31/bash_command/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
